@@ -46,7 +46,6 @@ function imsizeTokenizerAndRenderer(): TokenizerAndRendererExtension {
 
 		renderer(token) {
 			/** Add a container to the image, so we can add frame by css if needed,
-			 *  Note: use span instead of div, so it won't break the line.
 			 */
 			return `
 			<div class="image-container">
