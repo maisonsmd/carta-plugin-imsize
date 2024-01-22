@@ -29,14 +29,14 @@ For custom styles, this is an example of the generated HTML:
 </div>
 ```
 
-The image are shrink to fit its container by default.
+The images are shrunk to fit its container by default.
 
 ### Extension
 
 ```svelte
 <script>
 	import { Carta, CartaEditor } from 'carta-md';
-	import { video } from 'carta-plugin-video';
+	import { imsize } from 'carta-plugin-imsize';
 
 	const carta = new Carta({
 		extensions: [imsize()],
