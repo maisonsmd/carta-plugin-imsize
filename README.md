@@ -22,9 +22,9 @@ For custom styles, this is an example of the generated HTML:
 		src="path/to/image"
 		alt="image alt"
 		title="image title"
-		width="300"
-		height="200"
-		style="object-fit: contain;"
+		width="300px"
+		height="200px"
+		style="object-fit: contain; max-width: 100%; max-height: 100%;"
 	/>
 </div>
 ```

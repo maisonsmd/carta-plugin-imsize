@@ -6,20 +6,24 @@
 
 	const carta = new Carta({
 		extensions: [imsize()],
+		sanitizer: false,
 	});
 
 	let value = `
+Default:
+![test 0](https://placehold.co/600x400/A00000/FFF)
+
 With title, width and height:
-![cat 1](https://placehold.co/600x400/A00000/FFF "Title goes here" =200x300)
+![test 1](https://placehold.co/600x400/A00000/FFF "Title goes here" =200x300)
 
 With width and height:
-![cat 2](https://placehold.co/600x400/A00000/FFF =x)
+![test 2](https://placehold.co/600x400/A00000/FFF =x)
 
 With only height:
-![cat 3](https://placehold.co/600x400/A00000/FFF =x300)
+![test 3](https://placehold.co/600x400/A00000/FFF =x300)
 
 With only width:
-![cat 4](https://placehold.co/600x400/A00000/FFF =200x)`;
+![test 4](https://placehold.co/600x400/A00000/FFF =200x)`;
 </script>
 
 <svelte:head>
@@ -56,6 +60,7 @@ With only width:
 	:global(.carta-font-code, code) {
 		font-family: 'Fira Code', monospace;
 		font-variant-ligatures: normal;
+		font-size: 0.95rem;
 	}
 
 	:global(input, textarea, button) {
