@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Carta, CartaEditor } from 'carta-md';
+	import { Carta, MarkdownEditor } from 'carta-md';
 	import 'carta-md/default.css';
 
 	import { imsize } from '$lib';
@@ -36,7 +36,7 @@ With only width:
 </svelte:head>
 
 <main>
-	<CartaEditor {carta} {value} />
+	<MarkdownEditor {carta} {value} />
 </main>
 
 <style>

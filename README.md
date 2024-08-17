@@ -35,7 +35,7 @@ The images are shrunk to fit its container by default.
 
 ```svelte
 <script>
-	import { Carta, CartaEditor } from 'carta-md';
+	import { Carta, MarkdownEditor } from 'carta-md';
 	import { imsize } from 'carta-plugin-imsize';
 
 	const carta = new Carta({
@@ -43,7 +43,7 @@ The images are shrunk to fit its container by default.
 	});
 </script>
 
-<CartaEditor {carta} />
+<MarkdownEditor {carta} />
 ```
 
 ## Usage

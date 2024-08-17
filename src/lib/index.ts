@@ -15,8 +15,11 @@ import { SKIP, visit } from 'unist-util-visit';
  */
 
 const RE_IMAGE_FULL = /!\[(?<alt>.*?)\]\((?<path>.*?)\s*(?:"(?<title>.*?)")?\s*(?:=(?<width>\d*)x(?<height>\d*))?\)/;
+// to detect the starting point
 const RE_START = /!\[((?<alt>.*?)\]\()?$/;
+// to detect the ending point
 const RE_END = /=(?<width>\d*)x(?<height>\d*)\)/;
+const RE_TITLE_TO_END = /^ (?:"(?<title>.*?)")?\s*(?:=(?<width>\d*)x(?<height>\d*))?\)/;
 
 function transformer(ast: any) {
 	// Normal image without size
@@ -49,9 +52,9 @@ function transformer(ast: any) {
 		const openingNode = node;
 
 		// Find the closing node
-		const closingNode = findAfter(parent, openingNode, (node) => {
+		const closingNode = findAfter(parent, openingNode, (node: any) => {
 			return node.type === 'text' && RE_END.test((node as Text).value);
-		});
+		}) as Text | undefined;
 
 		if (!closingNode) return;
 
@@ -63,6 +66,10 @@ function transformer(ast: any) {
 
 		const match = mergedText.match(RE_IMAGE_FULL);
 		if (!match) return;
+
+		// Remove the matced portion from the opening and closing node
+		openingNode.value = openingNode.value.replace(RE_START, '');
+		closingNode.value = closingNode.value.replace(RE_TITLE_TO_END, '');
 
 		const newNode = {
 			type: 'div',
@@ -89,12 +96,12 @@ function transformer(ast: any) {
 		};
 
 		// Replace the nodes with the new node
-		parent.children.splice(index, allNodes.length, newNode as any);
+		parent.children.splice(index + 1, allBetween.length, newNode as any);
 		return [SKIP, index + allNodes.length];
 	};
 
 	visit(ast, 'image', normalImageVisitor);
-	visit(ast, () => true, newFormatVisitor);
+	visit(ast, 'text', newFormatVisitor);
 }
 
 export const imsize = (): CartaPlugin => {

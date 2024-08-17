@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@types/mdast':
-        specifier: ^4.0.4
-        version: 4.0.4
       mdast:
         specifier: ^3.0.0
         version: 3.0.0
@@ -39,6 +36,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.2
         version: 3.1.1(svelte@4.2.18)(vite@5.4.0)
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.19.0
         version: 6.19.0(@typescript-eslint/parser@6.19.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.56.0)(typescript@5.3.3)

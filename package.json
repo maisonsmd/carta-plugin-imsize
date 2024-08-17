@@ -1,6 +1,6 @@
 {
 	"name": "carta-plugin-imsize",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -42,6 +42,7 @@
 		"@sveltejs/kit": "^2.5.4",
 		"@sveltejs/package": "^2.3.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
+		"@types/mdast": "^4.0.4",
 		"@typescript-eslint/eslint-plugin": "^6.19.0",
 		"carta-md": "^4.0.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -81,7 +82,6 @@
 	},
 	"homepage": "https://github.com/maisonsmd/carta-plugin-imsize#readme",
 	"dependencies": {
-		"@types/mdast": "^4.0.4",
 		"mdast": "^3.0.0",
 		"mdast-util-to-string": "^4.0.0",
 		"unist-util-find-after": "^5.0.0",
