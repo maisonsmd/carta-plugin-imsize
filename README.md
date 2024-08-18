@@ -22,11 +22,27 @@ For custom styles, this is an example of the generated HTML:
 		src="path/to/image"
 		alt="image alt"
 		title="image title"
-		width="300px"
-		height="200px"
-		style="object-fit: contain; max-width: 100%; max-height: 100%;"
+		width="300"
+		height="200"
 	/>
 </div>
+```
+
+Example CSS:
+
+```CSS
+/* Create a light blue background for images that fill parent's width */
+.markdown-body .image-container {
+	padding: 5px;
+	background-color: lightblue;
+	text-align: center;
+}
+
+.markdown-body .image-container img {
+	object-fit: contain;
+	max-width: 100%; 
+	max-height: 100%;
+}
 ```
 
 The images are shrunk to fit its container by default.

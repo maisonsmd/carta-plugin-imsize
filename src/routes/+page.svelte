@@ -17,7 +17,7 @@ With title, width and height:
 ![test 1](https://placehold.co/600x400/A00000/FFF "Title goes here" =200x300)
 
 With width and height:
-![test 2](https://placehold.co/600x400/A00000/FFF =x)
+![test 2](https://placehold.co/600x400/A00000/FFF =100x100)
 
 With only height:
 ![test 3](https://placehold.co/600x400/A00000/FFF =x300)
@@ -40,15 +40,16 @@ With only width:
 </main>
 
 <style>
-	:global(.image-container) {
+	:global(.markdown-body .image-container) {
 		padding: 5px;
 		background-color: lightblue;
-		display: flex;
-		justify-content: center;
+		text-align: center;
 	}
 
-	:global(.image-container img) {
-		background-color: bisque;
+	:global(.markdown-body .image-container img) {
+		object-fit: contain;
+		max-width: 100%; 
+		max-height: 100%;
 	}
 
 	:global(body) {

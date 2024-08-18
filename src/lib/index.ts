@@ -71,6 +71,9 @@ function transformer(ast: any) {
 		openingNode.value = openingNode.value.replace(RE_START, '');
 		closingNode.value = closingNode.value.replace(RE_TITLE_TO_END, '');
 
+		const w = match.groups?.width;
+		const h = match.groups?.height;
+
 		const newNode = {
 			type: 'div',
 			data: {
@@ -86,9 +89,8 @@ function transformer(ast: any) {
 					title: match.groups?.title,
 					data: {
 						hProperties: {
-							...(match.groups?.width ? { width: match.groups.width + 'px' } : {}),
-							...(match.groups?.height ? { height: match.groups.height + 'px' } : {}),
-							style: 'object-fit: contain; max-width: 100%; max-height: 100%;',
+							...(w ? { width: w } : {}),
+							...(h ? { width: h } : {}),
 						},
 					},
 				},
