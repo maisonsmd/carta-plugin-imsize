@@ -46,6 +46,45 @@ function transformer(ast: any) {
 	const newFormatVisitor: Visitor<Text, Parent> = function (node, index, parent): VisitorResult {
 		if (!parent || typeof index === 'undefined') return;
 
+		// Case RE_FULL_IMAGE is found in single node
+		if (RE_IMAGE_FULL.test(node.value)) {
+			const match = node.value.match(RE_IMAGE_FULL);
+			if (!match) return;
+
+			const w = match.groups?.width;
+			const h = match.groups?.height;
+
+			console.log(w, h);
+
+			const newNode = {
+				type: 'div',
+				data: {
+					hProperties: {
+						className: 'image-container',
+					},
+				},
+				children: [
+					{
+						type: 'image',
+						alt: match.groups?.alt,
+						url: match.groups?.path,
+						title: match.groups?.title,
+						data: {
+							hProperties: {
+								...(w ? { width: w } : {}),
+								...(h ? { height: h } : {}),
+							},
+						},
+					},
+				],
+			};
+
+			parent.children[index] = newNode as any;
+			return [SKIP, index + 1];
+		}
+
+		// Case RE_FULL_IMAGE is found in multiple nodes (RE_START and RE_END)
+
 		// If this is the starting point
 		if (!RE_START.test(toString(node))) return;
 
@@ -90,7 +129,7 @@ function transformer(ast: any) {
 					data: {
 						hProperties: {
 							...(w ? { width: w } : {}),
-							...(h ? { width: h } : {}),
+							...(h ? { height: h } : {}),
 						},
 					},
 				},
