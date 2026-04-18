@@ -2,7 +2,7 @@ import type { Plugin as CartaPlugin } from 'carta-md';
 import type { Parent, Text } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { findAfter } from 'unist-util-find-after';
-import { findAllBetween } from 'unist-util-find-between-all';
+import { findBetween } from 'unist-util-find-between';
 import type { Visitor, VisitorResult } from 'unist-util-visit';
 import { SKIP, visit } from 'unist-util-visit';
 
@@ -97,7 +97,7 @@ function transformer(ast: any) {
 
 		if (!closingNode) return;
 
-		const allBetween = findAllBetween(parent, openingNode, closingNode);
+		const allBetween = findBetween(parent, openingNode, closingNode);
 		const allNodes = [openingNode, ...allBetween, closingNode];
 		const mergedText = allNodes.map((node) => toString(node)).join('');
 

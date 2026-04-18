@@ -1,6 +1,6 @@
 {
 	"name": "carta-plugin-imsize",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -85,7 +85,7 @@
 		"mdast": "^3.0.0",
 		"mdast-util-to-string": "^4.0.0",
 		"unist-util-find-after": "^5.0.0",
-		"unist-util-find-between-all": "^1.0.5",
+		"unist-util-find-between": "^1.2.1",
 		"unist-util-visit": "^5.0.0"
 	}
 }
